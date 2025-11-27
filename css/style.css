@@ -1,0 +1,776 @@
+/* ===========================================================
+   FONT & THEME VARIABLES
+   =========================================================== */
+@import url('https://rsms.me/inter/inter.css');
+
+html { 
+  font-family: 'Inter', sans-serif; 
+}
+@supports (font-variation-settings: normal) {
+  html { font-family: 'Inter var', sans-serif; }
+}
+
+/* Theme Colors: Light & Dark */
+:root {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --card-bg: #f5f5f5;
+    --card-border: #ddd;
+    --highlight: #4a90e2;
+}
+
+.dark-mode {
+    --bg-color: #1c1c1e;
+    --text-color: #e5e5e7;
+    --card-bg: #2c2c2e;
+    --card-border: #444;
+    --highlight: #7ab8ff;
+}
+
+
+/* ===========================================================
+   GLOBAL RESET
+   =========================================================== */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+
+/* ===========================================================
+   GLOBAL FOOTER
+   =========================================================== */
+footer {
+    text-align: center;
+    padding: 1rem 0;
+    color: var(--text-color);
+}
+
+footer a {
+    text-decoration: none;
+    color: var(--text-color);
+    transition: color 0.3s;
+    font-weight: 500;
+}
+footer a:hover {
+    color: var(--highlight);
+}
+
+
+/* ===========================================================
+   CONTAINER (GLOBAL WRAPPER)
+   =========================================================== */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 0 1rem;
+}
+
+
+/* ===========================================================
+   HEADER (GLOBAL NAVIGATION)
+   =========================================================== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  flex-wrap: wrap;
+}
+
+header > .logo {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+header > ul {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+header > ul > li > a {
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text-color);
+  padding: 0.5rem 0;
+  transition: color 0.3s;
+}
+header > ul > li > a:hover {
+  color: var(--highlight);
+}
+
+
+/* ===========================================================
+   HOME PAGE
+   =========================================================== */
+section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  text-align: center;
+}
+
+section > .title > strong {
+  font-size: 3.5rem;
+  font-weight: 700;
+}
+
+section > .subtitle > p {
+  font-size: 1.3rem;
+  color: #555;
+}
+
+/* Room List Buttons */
+.room-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+.room-list > .btn {
+  padding: 0.75rem 1.5rem;
+  background-color: var(--highlight);
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+  min-width: 140px;
+}
+.room-list > .btn:hover {
+  background-color: #357ab8;
+}
+
+/* Welcome Text */
+.welcome-box {
+    font-size: 1.1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+    max-width: 600px;
+    padding: 0.8rem 1.2rem;
+    margin-top: -0.7rem;    
+    margin-bottom: -0.6rem;
+    color: var(--text-color);
+}
+
+/* Home Focus Stats */
+#focus-stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  max-width: 500px;
+}
+
+#focus-stats > p {
+  background-color: var(--card-bg);
+  padding: 0.75rem 1.2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  font-size: 1.05rem;
+  font-weight: 500;
+  text-align: center;
+  transition: 0.2s;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 260px;
+  width: 100%;
+}
+#focus-stats > p > span {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-top: 0.5rem;
+  color: var(--highlight);
+}
+
+
+/* ===========================================================
+   REPORT PAGE
+   =========================================================== */
+.report-title strong {
+    font-size: 2.5rem;
+    font-weight: 700;
+    display: block;
+    margin: 2rem 0 1rem 0;
+    text-align: center;
+}
+
+/* Summary Cards (Today / Week / Total) */
+.stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+.stat-card {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    padding: 1.5rem 2rem;
+    text-align: center;
+    width: 140px;
+    min-height: 100px;
+}
+.stat-card p {
+    font-size: 1rem;
+    color: #777;
+    margin-bottom: 0.5rem;
+}
+.stat-card h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+/* Room Breakdown (Cards) */
+.room-stats {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+.room-stats ul {
+    list-style: none;
+    margin: 0 auto;
+    max-width: 300px;
+}
+
+
+/* ===========================================================
+   SETTINGS PAGE
+   =========================================================== */
+.settings-title strong {
+    font-size: 2.2rem;
+    font-weight: 700;
+    text-align: center;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.settings-subtitle {
+    text-align: center;
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+.settings-wrapper {
+    max-width: 520px;
+    margin: 0 auto 2rem auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+}
+
+.settings-group {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    padding: 1.3rem 1.5rem;
+}
+
+.settings-group h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 0.9rem;
+}
+
+/* Time Input */
+.time-goal-row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.8rem;
+}
+
+.time-goal-field {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+.time-goal-field input {
+    width: 70px;
+    padding: 0.3rem 0.4rem;
+    border-radius: 6px;
+    border: 1px solid var(--card-border);
+    font-size: 0.9rem;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.reset-btn {
+    margin-top: 0.5rem;
+    padding: 0.7rem 1.2rem;
+    background-color: #e03d3d;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+.reset-btn:hover {
+    background-color: #c32f2f;
+}
+
+/* Card Options (Settings Page) */
+.card-option {
+    border: 1.5px solid var(--card-border);
+    border-radius: 10px;
+    padding: 0.8rem 1rem;
+    margin-bottom: 0.6rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.card-option p {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.card-option span {
+    font-size: 0.82rem;
+    color: #666;
+}
+
+.card-option.selected {
+    border-color: var(--highlight);
+    background-color: rgba(74,144,226,0.15);
+}
+
+.card-option:hover {
+    border-color: var(--highlight);
+}
+
+/* -----------------------------------------
+   Daily Time Goal - Modern Input UI
+----------------------------------------- */
+
+.settings-group .time-goal-row {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.8rem;
+    justify-content: space-between;
+}
+
+.settings-group .time-goal-field {
+    flex: 1;
+    background: var(--card-bg);
+    border: 1.5px solid var(--card-border);
+    padding: 0.9rem 1rem;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transition: 0.2s;
+}
+
+.settings-group .time-goal-field:hover {
+    border-color: var(--highlight);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.settings-group .time-goal-field input {
+    width: 100%;
+    font-size: 1.3rem;
+    font-weight: 700;
+    border: none;
+    background: transparent;
+    color: var(--text-color);
+    outline: none;
+    margin-bottom: 4px;
+}
+
+.settings-group .time-goal-field span {
+    font-size: 0.85rem;
+    color: #777;
+}
+
+.dark-mode .settings-group .time-goal-field span {
+    color: #aaa;
+}
+
+/* Placeholder color */
+.settings-group .time-goal-field input::placeholder {
+    color: #b9b9b9;
+}
+.dark-mode .settings-group .time-goal-field input::placeholder {
+    color: #777;
+}
+
+/* Adjust hint text spacing */
+.settings-group .time-goal-hint {
+    margin-top: 0.8rem;
+    font-size: 0.9rem;
+    color: #777;
+}
+.dark-mode .settings-group .time-goal-hhint {
+    color: #aaa;
+}
+
+/* Remove number input spin buttons (Chrome, Edge, Safari) */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+/* Remove spinners (Firefox) */
+input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+
+/* ===========================================================
+   MOBILE RESPONSIVE (HOME & REPORT)
+   =========================================================== */
+@media (max-width: 768px) {
+
+  /* Home */
+  #home-page section {
+    padding-top: 1.5rem;
+  }
+  #home-page .title strong {
+    font-size: 2.2rem;
+  }
+  #home-page .subtitle p {
+    font-size: 1.1rem;
+    max-width: 300px;
+  }
+  #home-page .room-list {
+    width: 100%;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  #home-page .room-list .btn {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    font-size: 1.05rem;
+  }
+  #home-page #focus-stats {
+    width: 100%;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+
+  /* Report */
+  #report-page .report-title strong {
+    font-size: 1.9rem;
+    margin-top: 1rem;
+  }
+  #report-page .stats {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  #report-page .stat-card {
+    width: 100%;
+    max-width: 320px;
+    padding: 1rem;
+  }
+}
+
+
+/* ===========================================================
+   SHARED COMPONENT — EXIT BUTTON
+   =========================================================== */
+.exit-btn {
+  position: absolute;
+  bottom: 30px;
+  right: 32px;
+  padding: 12px 22px;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: white;
+  border-radius: 10px;
+  font-size: 15px;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  transition: 0.2s ease;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 1px;
+  z-index: 10;
+}
+.exit-btn:hover {
+  background: rgba(255, 255, 255, 0.28);
+  transform: scale(1.05);
+}
+
+
+/* ===========================================================
+   SHARED COMPONENT — TOAST MESSAGE
+   =========================================================== */
+.fokas-toast {
+  position: fixed;
+  bottom: 35px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(74,144,226,0.95);
+  color: white;
+  padding: 12px 22px;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  box-shadow: 0px 4px 18px rgba(0,0,0,0.25);
+}
+.fokas-toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-5px);
+}
+
+
+/* ===========================================================
+   WEEKLY CHART WRAPPER
+   =========================================================== */
+.weekly-chart-wrap {
+    width: 100%;
+    max-width: 800px;
+    height: 360px;
+    margin: 50px auto;
+    position: relative;
+}
+#weeklyChart {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+
+/* ===========================================================
+   ROOM BREAKDOWN (REPORT CARDS)
+   =========================================================== */
+.room-stats ul { 
+    display: none; 
+}
+
+.room-stats {
+    margin-top: 40px;
+}
+
+.room-stats h3 {
+    font-size: 1.5rem;
+}
+
+.room-card-wrap {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+.room-card {
+    background: var(--card-bg, rgba(255,255,255,0.7));
+    backdrop-filter: blur(6px);
+    border-radius: 14px;
+    padding: 20px 25px;
+    width: 150px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.dark-mode .room-card {
+    background: rgba(40,40,40,0.6);
+}
+.room-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+.room-card p {
+    font-size: 1rem;
+    margin-bottom: 8px;
+}
+.room-card h2 {
+    font-size: 1.6rem;
+    margin: 0;
+    font-weight: 700;
+}
+
+#weekly-range {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.weekly-chart-wrap {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+
+/* ===========================================================
+   ROOM STYLES — SHARED BASE
+   (APPLIES ONLY TO FOCUS ROOMS)
+   =========================================================== */
+
+/* Room pages use fullscreen layout */
+body.room-page {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 100vh;
+}
+
+/* Shared Overlay */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(2px);
+  z-index: -1;
+}
+
+/* Shared Timer */
+.timer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 70px;
+  font-weight: 700;
+  text-shadow: 0 0 15px rgba(0, 0, 0, 0.9);
+  letter-spacing: 2px;
+  animation: fadeIn 1.5s ease;
+}
+
+/* Shared fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translate(-50%, -55%); }
+  to   { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+
+/* ===========================================================
+   JAZZ ROOM
+   =========================================================== */
+.jazz-bg {
+  position: fixed;
+  inset: 0;
+  background: url("https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/cca1e136569841.5720ffd3c7679.gif")
+              no-repeat center center / cover;
+  z-index: -2;
+}
+
+.audio-controls {
+  position: absolute;
+  top: calc(50% + 90px);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 15px;
+  z-index: 5;
+}
+.audio-controls button {
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  font-size: 15px;
+  transition: .2s;
+}
+.audio-controls button:hover {
+  background: rgba(255, 255, 255, 0.28);
+  transform: scale(1.05);
+}
+
+.volume-control {
+  position: absolute;
+  top: calc(50% + 150px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  z-index: 5;
+}
+.volume-control input[type="range"] {
+  width: 100%;
+  appearance: none;
+  height: 6px;
+  border-radius: 4px;
+  background: rgba(255,255,255,0.25);
+}
+.volume-control input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid rgba(255,255,255,0.3);
+  transition: 0.2s;
+}
+.volume-control input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+
+
+/* ===========================================================
+   LO-FI ROOM
+   =========================================================== */
+.lofi-bg {
+  position: fixed;
+  inset: 0;
+  background: url("https://i.pinimg.com/originals/4a/65/ab/4a65abeead3a8d113bccfee5d5d239f4.gif")
+              no-repeat center center / cover;
+  z-index: -2;
+}
+
+
+/* ===========================================================
+   RAIN ROOM
+   =========================================================== */
+.rain-bg {
+  position: fixed;
+  inset: 0;
+  background: url("https://i.pinimg.com/originals/46/5e/76/465e76ef9c20b4e3dd4075c69306f74e.gif")
+              no-repeat center center / cover;
+  z-index: -2;
+}
+
+
+/* ===========================================================
+   SILENCE ROOM (NO IMAGE)
+   =========================================================== */
+
+/* Default Silence Background */
+.silence-bg {
+  position: fixed;
+  inset: 0;
+  background: black;
+  z-index: -2;
+}
+
+/* Light / Dark Override (from HTML id selector) */
+html#silence-room .silence-bg {
+    background: white !important;
+}
+html#silence-room.dark-mode .silence-bg {
+    background: black !important;
+}
+
+/* Overlay theme adjustments */
+html#silence-room:not(.dark-mode) .overlay {
+    background: rgba(0, 0, 0, 0.08) !important;
+}
+html#silence-room.dark-mode .overlay {
+    background: rgba(0, 0, 0, 0.35) !important;
+}
+

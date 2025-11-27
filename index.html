@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fokas</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" type="image/png" href="../ico/favicon.ico">
+
+    <script>
+    (function(){
+      var t = localStorage.getItem("fokas-theme");
+      if (!t && window.matchMedia("(prefers-color-scheme: dark)").matches) t = "dark";
+      if (t === "dark") document.documentElement.classList.add("dark-mode");
+    })();
+    </script>
+</head>
+
+<body id="home-page">
+<div class="container">
+
+<header>
+    <p class="logo"><strong>Fokas</strong></p>
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="report.html">My Report</a></li>
+        <li><a href="setting.html">Settings</a></li>
+    </ul>
+</header>
+
+<section>
+
+    <div class="title"><strong>Fokas</strong></div>
+    <div class="subtitle"><p>A space to focus with music and calm.</p></div>
+
+    <div class="room-list">
+        <a class="btn" href="lofi.html">Lo-Fi Room</a>
+        <a class="btn" href="jazz.html">Jazz Room</a>
+        <a class="btn" href="rain.html">Rain Room</a>
+        <a class="btn" href="silence.html">Silence Room</a>
+    </div>
+
+    <div id="welcome-box" class="welcome-box">Loading...</div>
+
+    <div id="focus-stats">
+        <p>Today: <span id="today-time">0h 0m</span></p>
+        <p>This Week: <span id="week-time">0h 0m</span></p>
+    </div>
+
+</section>
+
+<footer>
+    <p>Fokas © 2025 by 
+        <a href="https://www.instagram.com/jjjason0000/" target="_blank">@jjjason0000</a>
+    </p>
+</footer>
+
+</div>
+
+<script src="../js/welcome.js"></script>
+<script src="../js/t-w.js"></script>
+</body>
+</html>

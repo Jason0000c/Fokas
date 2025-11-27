@@ -1,0 +1,508 @@
+@import url('https://rsms.me/inter/inter.css');
+
+html { 
+  font-family: 'Inter', sans-serif; 
+}
+@supports (font-variation-settings: normal) {
+  html { font-family: 'Inter var', sans-serif; }
+}
+
+/* -----------------------------------------------------------
+   COLOR VARIABLES (LIGHT / DARK THEME)
+----------------------------------------------------------- */
+:root {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --card-bg: #f5f5f5;
+    --card-border: #ddd;
+    --highlight: #4a90e2;
+}
+
+.dark-mode {
+    --bg-color: #1c1c1e;
+    --text-color: #e5e5e7;
+    --card-bg: #2c2c2e;
+    --card-border: #444;
+    --highlight: #7ab8ff;
+}
+
+/* -----------------------------------------------------------
+   GLOBAL
+----------------------------------------------------------- */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+footer {
+    text-align: center;
+    padding: 1rem 0;
+    color: var(--text-color);
+}
+
+footer a {
+    text-decoration: none;
+    color: var(--text-color);
+    transition: color 0.3s;
+    font-weight: 500;
+}
+
+footer a:hover {
+    color: var(--highlight);
+}
+
+/* -----------------------------------------------------------
+   CONTAINER
+----------------------------------------------------------- */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 0 1rem;
+}
+
+
+/* -----------------------------------------------------------
+   HEADER
+----------------------------------------------------------- */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  flex-wrap: wrap;
+}
+
+header > .logo {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+header > ul {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+header > ul > li > a {
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text-color);
+  padding: 0.5rem 0;
+  transition: color 0.3s;
+}
+
+header > ul > li > a:hover {
+  color: var(--highlight);
+}
+
+/* -----------------------------------------------------------
+   SECTION (HOME)
+----------------------------------------------------------- */
+section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  text-align: center;
+}
+
+section > .title > strong {
+  font-size: 3.5rem;
+  font-weight: 700;
+}
+
+section > .subtitle > p {
+  font-size: 1.3rem;
+  color: #555;
+}
+
+/* ROOM BUTTONS */
+.room-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.room-list > .btn {
+  padding: 0.75rem 1.5rem;
+  background-color: var(--highlight);
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+  min-width: 140px;
+}
+
+.room-list > .btn:hover {
+  background-color: #357ab8;
+}
+
+/* WELCOME BOX */
+.welcome-box {
+    font-size: 1.1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+    max-width: 600px;
+    padding: 0.8rem 1.2rem;
+    margin-top: -0.7rem;    
+    margin-bottom: -0.6rem;
+    color: var(--text-color);
+}
+
+/* FOCUS STATS */
+#focus-stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  max-width: 500px;
+}
+
+#focus-stats > p {
+  background-color: var(--card-bg);
+  padding: 0.75rem 1.2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  font-size: 1.05rem;
+  font-weight: 500;
+  text-align: center;
+  transition: 0.2s;
+  color: var(--text-color);
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 260px;
+  width: 100%;
+}
+
+#focus-stats > p > span {
+  display: block;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-top: 0.5rem;
+  color: var(--highlight);
+}
+
+/* -----------------------------------------------------------
+   REPORT PAGE
+----------------------------------------------------------- */
+.report-title strong {
+    font-size: 2.5rem;
+    font-weight: 700;
+    display: block;
+    margin: 2rem 0 1rem 0;
+    text-align: center;
+}
+
+.stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.stat-card {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    padding: 1.5rem 2rem;
+    text-align: center;
+    width: 140px;
+    min-height: 100px;
+    color: var(--text-color);
+}
+
+.stat-card p {
+    font-size: 1rem;
+    color: #777;
+    margin-bottom: 0.5rem;
+}
+
+.stat-card h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.room-stats {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--text-color);
+}
+
+.room-stats ul {
+    list-style: none;
+    margin: 0 auto;
+    max-width: 300px;
+}
+
+/* -----------------------------------------------------------
+   SETTINGS PAGE
+----------------------------------------------------------- */
+.settings-title strong {
+    font-size: 2.2rem;
+    font-weight: 700;
+    text-align: center;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.settings-subtitle {
+    text-align: center;
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+.settings-wrapper {
+    max-width: 520px;
+    margin: 0 auto 2rem auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+}
+
+.settings-group {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    padding: 1.3rem 1.5rem;
+}
+
+.settings-group h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 0.9rem;
+    color: var(--text-color);
+}
+
+/* 카드 옵션 */
+.card-option {
+    border: 1.5px solid var(--card-border);
+    border-radius: 10px;
+    padding: 0.8rem 1rem;
+    margin-bottom: 0.6rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.card-option p {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.card-option span {
+    font-size: 0.82rem;
+    color: #666;
+}
+
+.card-option.selected {
+    border-color: var(--highlight);
+    background-color: rgba(74,144,226,0.15);
+}
+
+.card-option:hover {
+    border-color: var(--highlight);
+}
+
+/* 시간 입력 */
+.time-goal-row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.8rem;
+}
+
+.time-goal-field {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.time-goal-field input {
+    width: 70px;
+    padding: 0.3rem 0.4rem;
+    border-radius: 6px;
+    border: 1px solid var(--card-border);
+    font-size: 0.9rem;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.reset-btn {
+    margin-top: 0.5rem;
+    padding: 0.7rem 1.2rem;
+    background-color: #e03d3d;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+.reset-btn:hover {
+    background-color: #c32f2f;
+}
+
+/* ============================
+   HOME PAGE MOBILE FIX
+============================ */
+@media (max-width: 768px) {
+
+  #home-page section {
+    padding-top: 1.5rem;
+  }
+
+  #home-page .title strong {
+    font-size: 2.2rem;
+  }
+
+  #home-page .subtitle p {
+    font-size: 1.1rem;
+    max-width: 300px;
+  }
+
+  #home-page .room-list {
+    width: 100%;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  #home-page .room-list .btn {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    font-size: 1.05rem;
+  }
+
+  #home-page #focus-stats {
+    width: 100%;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+
+  #home-page #focus-stats p {
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+    padding: 0.9rem 1rem;
+    font-size: 1rem;
+  }
+
+  #home-page .welcome-box {
+    font-size: 1rem;
+    max-width: 280px;
+  }
+}
+
+
+/* ============================
+   REPORT PAGE MOBILE FIX
+============================ */
+@media (max-width: 768px) {
+
+  #report-page .report-title strong {
+    font-size: 1.9rem;
+    margin-top: 1rem;
+  }
+
+  #report-page .stats {
+    flex-direction: column;
+    gap: 0.8rem;
+    width: 100%;
+  }
+
+  #report-page .stat-card {
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+
+  #report-page .stat-card h2 {
+    font-size: 1.3rem;
+  }
+
+  #report-page .room-stats h3 {
+    font-size: 1.2rem;
+  }
+
+  #report-page .room-stats ul {
+    font-size: 0.95rem;
+    padding: 0;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 280px;
+  }
+
+  #report-page .report-buttons button {
+    width: 100%;
+    max-width: 280px;
+    padding: 0.8rem;
+    font-size: 1rem;
+  }
+}
+
+/* Exit Button - Global */
+.exit-btn {
+  position: absolute;
+  bottom: 30px;
+  right: 32px;
+  padding: 12px 22px;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: white;
+  border-radius: 10px;
+  font-size: 15px;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  transition: 0.2s ease;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 1px;
+  z-index: 10;
+}
+
+.exit-btn:hover {
+  background: rgba(255, 255, 255, 0.28);
+  transform: scale(1.05);
+}
+
+/* =============================
+   FOKAS TOAST MESSAGE
+============================= */
+
+.fokas-toast {
+  position: fixed;
+  bottom: 35px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(74,144,226,0.95); /* highlight 색 기반 */
+  color: white;
+  padding: 12px 22px;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  box-shadow: 0px 4px 18px rgba(0,0,0,0.25);
+}
+
+.fokas-toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-5px);
+}

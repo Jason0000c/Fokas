@@ -1,3 +1,6 @@
+// =============================
+// SETTINGS PAGE LOGIC
+// =============================
 document.addEventListener("DOMContentLoaded", () => {
 
     // -----------------------
@@ -12,9 +15,13 @@ document.addEventListener("DOMContentLoaded", () => {
             document.documentElement.classList.remove("dark-mode");
         }
 
+        // 카드 UI 상태 업데이트
         themeCards.forEach(c => c.classList.remove("selected"));
-        if (mode === "dark") themeCards[1].classList.add("selected");
-        else themeCards[0].classList.add("selected");
+        if (mode === "dark") {
+            if (themeCards[1]) themeCards[1].classList.add("selected");
+        } else {
+            if (themeCards[0]) themeCards[0].classList.add("selected");
+        }
     }
 
     // load theme
@@ -28,8 +35,9 @@ document.addEventListener("DOMContentLoaded", () => {
     themeCards.forEach(card => {
         card.addEventListener("click", () => {
             const isDark = card.textContent.toLowerCase().includes("dark");
-            localStorage.setItem("fokas-theme", isDark ? "dark" : "light");
-            applyTheme(isDark ? "dark" : "light");
+            const mode = isDark ? "dark" : "light";
+            localStorage.setItem("fokas-theme", mode);
+            applyTheme(mode);
         });
     });
 
@@ -41,15 +49,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function applyTracking(mode) {
         trackingCards.forEach(c => c.classList.remove("selected"));
-        if (mode === "open") trackingCards[0].classList.add("selected");
-        else trackingCards[1].classList.add("selected");
+        if (mode === "open") {
+            if (trackingCards[0]) trackingCards[0].classList.add("selected");
+        } else {
+            if (trackingCards[1]) trackingCards[1].classList.add("selected");
+        }
     }
 
-    // load
+    // load tracking mode
     let savedTrack = localStorage.getItem("fokas_setting_track") || "open";
     applyTracking(savedTrack);
 
-    // click
+    // click tracking mode
     trackingCards.forEach((card, index) => {
         card.addEventListener("click", () => {
             const mode = index === 0 ? "open" : "visible";
@@ -66,37 +77,47 @@ document.addEventListener("DOMContentLoaded", () => {
     const goalMinutes = document.getElementById("goal-minutes");
 
     function saveGoal() {
-        localStorage.setItem("fokas_daily_goal_hours", goalHours.value || 0);
-        localStorage.setItem("fokas_daily_goal_minutes", goalMinutes.value || 0);
+        localStorage.setItem("fokas_daily_goal_hours", goalHours.value || "0");
+        localStorage.setItem("fokas_daily_goal_minutes", goalMinutes.value || "0");
     }
 
-    goalHours.addEventListener("input", saveGoal);
-    goalMinutes.addEventListener("input", saveGoal);
+    if (goalHours && goalMinutes) {
+        // load
+        goalHours.value = localStorage.getItem("fokas_daily_goal_hours") || "0";
+        goalMinutes.value = localStorage.getItem("fokas_daily_goal_minutes") || "0";
 
-    // load
-    goalHours.value = localStorage.getItem("fokas_daily_goal_hours") || 0;
-    goalMinutes.value = localStorage.getItem("fokas_daily_goal_minutes") || 0;
+        // save on change
+        goalHours.addEventListener("input", saveGoal);
+        goalMinutes.addEventListener("input", saveGoal);
+    }
 
 
     // -----------------------
     // RESET SETTINGS
     // -----------------------
-    document.querySelector(".reset-btn").addEventListener("click", () => {
+    const resetBtn = document.querySelector(".reset-btn");
 
-        // clear localStorage
-        localStorage.removeItem("fokas-theme");
-        localStorage.removeItem("fokas_setting_track");
-        localStorage.removeItem("fokas_daily_goal_hours");
-        localStorage.removeItem("fokas_daily_goal_minutes");
+    if (resetBtn) {
+        resetBtn.addEventListener("click", () => {
 
-        // reset UI
-        applyTheme("light");
-        applyTracking("open");
-        goalHours.value = 0;
-        goalMinutes.value = 0;
+            // 1) localStorage를 "기본값"으로 다시 세팅
+            localStorage.setItem("fokas-theme", "light");        // 테마: 라이트
+            localStorage.setItem("fokas_setting_track", "open"); // 트래킹: room open
+            localStorage.setItem("fokas_daily_goal_hours", "0");
+            localStorage.setItem("fokas_daily_goal_minutes", "0");
 
-        showToast("Settings reset to default!");
-    });
+            // 2) 화면(UI)도 같이 초기화
+            applyTheme("light");
+            applyTracking("open");
+            if (goalHours && goalMinutes) {
+                goalHours.value = 0;
+                goalMinutes.value = 0;
+            }
+
+            // 3) 토스트 메시지
+            showToast("Settings reset to default!");
+        });
+    }
 });
 
 // =============================

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="silence-room">
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -9,41 +9,17 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" type="image/png" href="ico/favicon.ico">
 
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-      height: 100vh;
-    }
-
-    /* Overlay — 동일 */
-    .overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.35);
-      backdrop-filter: blur(2px);
-      z-index: -1;
-    }
-
-    /* Timer — 동일 */
-    .timer {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: white;
-      font-size: 70px;
-      font-weight: 700;
-      text-shadow: 0 0 15px rgba(0, 0, 0, 0.9);
-      letter-spacing: 2px;
-      animation: fadeIn 1.5s ease;
-    }
-  </style>
+  <script>
+  (function(){
+    var t = localStorage.getItem("fokas-theme");
+    if (!t && window.matchMedia("(prefers-color-scheme: dark)").matches) t = "dark";
+    if (t === "dark") document.documentElement.classList.add("dark-mode");
+  })();
+  </script>
 
 </head>
 
-<body>
+<body id="silence-page">
 
   <!-- Background -->
   <div class="silence-bg"></div>

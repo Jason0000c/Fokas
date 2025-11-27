@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Silence Room</title>
+
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="../css/style.css">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      height: 100vh;
+    }
+
+    /* Overlay — 동일 */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(2px);
+      z-index: -1;
+    }
+
+    /* Timer — 동일 */
+    .timer {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 70px;
+      font-weight: 700;
+      text-shadow: 0 0 15px rgba(0, 0, 0, 0.9);
+      letter-spacing: 2px;
+      animation: fadeIn 1.5s ease;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <!-- Background -->
+  <div class="silence-bg"></div>
+  <div class="overlay"></div>
+
+  <!-- Center Timer -->
+  <div id="timer" class="timer">00:00:00</div>
+
+  <!-- Exit Button -->
+  <button class="exit-btn" onclick="window.location.href='index.html'">Exit</button>
+
+  <!-- Timer Script -->
+  <script src="../js/timer.js"></script>
+
+  <!-- Start Timer (room = silence) -->
+  <script>
+    initFokasTimer("silence");
+  </script>
+
+</body>
+</html>

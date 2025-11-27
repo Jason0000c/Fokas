@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lo-fi Room</title>
+
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" type="image/png" href="../ico/favicon.ico">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      height: 100vh;
+    }
+
+    /* Background GIF */
+    .lofi-bg {
+      position: fixed;
+      inset: 0;
+      background: url("https://i.pinimg.com/originals/4a/65/ab/4a65abeead3a8d113bccfee5d5d239f4.gif")
+                  no-repeat center center / cover;
+      z-index: -2;
+    }
+
+    /* Dark overlay */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(2px);
+      z-index: -1;
+    }
+
+    /* Timer */
+    .timer {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 70px;
+      font-weight: 700;
+      text-shadow: 0 0 15px rgba(0, 0, 0, 0.9);
+      letter-spacing: 2px;
+      animation: fadeIn 1.5s ease;
+    }
+
+    /* Audio Controls */
+    .audio-controls {
+      position: absolute;
+      top: calc(50% + 90px);
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 15px;
+      z-index: 5;
+    }
+
+    .audio-controls button {
+      padding: 10px 20px;
+      background: rgba(255, 255, 255, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      backdrop-filter: blur(4px);
+      font-size: 15px;
+      transition: .2s;
+    }
+
+    .audio-controls button:hover {
+      background: rgba(255, 255, 255, 0.28);
+      transform: scale(1.05);
+    }
+
+    /* Volume Slider */
+    .volume-control {
+      position: absolute;
+      top: calc(50% + 150px);
+      left: 50%;
+      transform: translateX(-50%);
+      width: 200px;
+      z-index: 5;
+    }
+
+    .volume-control input[type="range"] {
+      width: 100%;
+      appearance: none;
+      height: 6px;
+      border-radius: 4px;
+      background: rgba(255,255,255,0.25);
+      cursor: pointer;
+    }
+
+    .volume-control input[type="range"]::-webkit-slider-thumb {
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: white;
+      border: 2px solid rgba(255,255,255,0.3);
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .volume-control input[type="range"]::-webkit-slider-thumb:hover {
+      transform: scale(1.15);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translate(-50%, -55%); }
+      to   { opacity: 1; transform: translate(-50%, -50%); }
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <!-- Background -->
+  <div class="lofi-bg"></div>
+  <div class="overlay"></div>
+
+  <!-- Timer -->
+  <div id="timer" class="timer">00:00:00</div>
+
+  <!-- Audio Controls -->
+  <div class="audio-controls">
+    <button id="playBtn">Play</button>
+    <button id="pauseBtn">Pause</button>
+  </div>
+
+  <!-- Volume -->
+  <div class="volume-control">
+    <input type="range" id="volumeRange" min="0" max="100" value="70">
+  </div>
+
+  <!-- Audio Stream -->
+  <audio id="lofiAudio" preload="none">
+    <source src="https://live.hunter.fm/lofi_high" type="audio/mpeg">
+  </audio>
+
+  <!-- Exit -->
+  <button class="exit-btn" onclick="window.location.href='index.html'">Exit</button>
+
+
+  <script src="../js/timer.js"></script>
+
+  <script src="../js/lofi.js"></script>
+
+  <script>
+    initFokasTimer("lofi");
+  </script>
+
+</body>
+</html>

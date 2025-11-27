@@ -16,19 +16,6 @@
     })();
     </script>
 
-    <style>
-        .weekly-chart-wrap {
-            width: 100%;
-            max-width: 800px;
-            height: 360px;
-            margin: 50px auto;
-            position: relative;
-        }
-        #weeklyChart {
-            width: 100% !important;
-            height: 100% !important;
-        }
-    </style>
 </head>
 
 <body id="report-page">
@@ -55,14 +42,31 @@
 
     <div class="room-stats">
         <h3>Room Breakdown</h3>
-        <ul>
-            <li>Lo-Fi: <span id="lofi-time">0h 0m</span></li>
-            <li>Jazz: <span id="jazz-time">0h 0m</span></li>
-            <li>Rain: <span id="rain-time">0h 0m</span></li>
-            <li>Silence: <span id="silence-time">0h 0m</span></li>
-        </ul>
+
+        <div class="room-card-wrap">
+            <div class="room-card">
+                <p>Lo-Fi</p>
+                <h2 id="lofi-time">0h 0m</h2>
+            </div>
+
+            <div class="room-card">
+                <p>Jazz</p>
+                <h2 id="jazz-time">0h 0m</h2>
+            </div>
+
+            <div class="room-card">
+                <p>Rain</p>
+                <h2 id="rain-time">0h 0m</h2>
+            </div>
+
+            <div class="room-card">
+                <p>Silence</p>
+                <h2 id="silence-time">0h 0m</h2>
+            </div>
+        </div>
     </div>
 
+    <h3 id="weekly-range"></h3>
     <div class="weekly-chart-wrap">
         <canvas id="weeklyChart"></canvas>
     </div>
@@ -85,15 +89,10 @@
 
 </div>
 
-<!-- 기존 스크립트 -->
 <script src="js/t-w.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.0/dist/confetti.browser.min.js"></script>
-
-<!-- ⭐ Weekly Chart 라이브러리 -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
-
-<!-- ⭐ Weekly Chart 스크립트 -->
 <script src="js/myreport.js"></script>
 
 </body>

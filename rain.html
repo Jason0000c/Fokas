@@ -13,8 +13,8 @@
 
 <body>
 
-  <!-- Background -->
-  <div class="rain-bg"></div>
+  <!-- Rain Canvas Background -->
+  <div id="jsi-rain-container" class="rain-canvas"></div>
   <div class="overlay"></div>
 
   <!-- Timer -->
@@ -39,13 +39,15 @@
   <!-- Exit Button -->
   <button class="exit-btn" onclick="window.location.href='index.html'">Exit</button>
 
-  <!-- JS -->
   <script src="js/timer.js"></script>
   <script src="js/roomControls.js"></script>
+
+  <!-- Rain effect -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="js/rain-canvas.js"></script>
 
   <script>
     initFokasTimer("rain");
   </script>
-
 </body>
 </html>

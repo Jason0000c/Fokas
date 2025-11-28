@@ -10,6 +10,12 @@ html {
   html { font-family: 'Inter var', sans-serif; }
 }
 
+html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 /* Theme Colors: Light & Dark */
 :root {
     --bg-color: #ffffff;
@@ -40,6 +46,7 @@ html {
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
+  overflow-x: hidden;
 }
 
 
@@ -159,7 +166,6 @@ section > .subtitle > p {
 /* Welcome Text */
 .welcome-box {
     font-size: 1.1rem;
-    white-space: nowrap;
     overflow: hidden;
     position: relative;
     max-width: 600px;
@@ -169,13 +175,14 @@ section > .subtitle > p {
     color: var(--text-color);
 }
 
-/* Home Focus Stats */
+/* Home Focus Stats – Today / This Week*/
 #focus-stats {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
-  max-width: 500px;
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto; 
 }
 
 #focus-stats > p {
@@ -187,13 +194,13 @@ section > .subtitle > p {
   font-weight: 500;
   text-align: center;
   transition: 0.2s;
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-width: 260px;
   width: 100%;
 }
+
 #focus-stats > p > span {
   font-size: 1.3rem;
   font-weight: 700;
@@ -439,32 +446,43 @@ input[type="number"] {
    MOBILE RESPONSIVE (HOME & REPORT)
    =========================================================== */
 @media (max-width: 768px) {
-
-  /* Home */
   #home-page section {
     padding-top: 1.5rem;
   }
+
   #home-page .title strong {
     font-size: 2.2rem;
   }
+
   #home-page .subtitle p {
     font-size: 1.1rem;
     max-width: 300px;
   }
+
   #home-page .room-list {
     width: 100%;
     flex-direction: column;
     gap: 0.8rem;
   }
+
   #home-page .room-list .btn {
     width: 100%;
     padding: 0.9rem 1rem;
     font-size: 1.05rem;
   }
+
   #home-page #focus-stats {
     width: 100%;
+    display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 0.7rem;
+  }
+
+  #home-page #focus-stats > p {
+    width: 100%;
+    max-width: 260px;
+    margin: 0 auto;
   }
 
   /* Report */
@@ -738,13 +756,19 @@ body.room-page {
    RAIN ROOM
    =========================================================== */
 .rain-bg {
+  background: none !important;
+}
+
+#jsi-rain-container {
   position: fixed;
   inset: 0;
-  background: url("https://i.pinimg.com/originals/46/5e/76/465e76ef9c20b4e3dd4075c69306f74e.gif")
-              no-repeat center center / cover;
   z-index: -2;
 }
 
+#jsi-rain-container canvas {
+  width: 100%;
+  height: 100%;
+}
 
 /* ===========================================================
    SILENCE ROOM (NO IMAGE)
@@ -774,3 +798,59 @@ html#silence-room.dark-mode .overlay {
     background: rgba(0, 0, 0, 0.35) !important;
 }
 
+/* ===========================================================
+   HOME — FOCUS MORPH QUOTE (SUPER LARGE)
+   =========================================================== */
+
+#home-page #focus-morph {
+  width: 100%;
+  max-width: 1000px;
+
+  /* Move text a bit downward on desktop */
+  margin: 3rem auto 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  filter: url(#focus-threshold);
+  position: relative;
+
+  /* Enough space for large 8rem text */
+  height: 160px;
+}
+
+#home-page #focus-morph-text1,
+#home-page #focus-morph-text2 {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+
+  font-family: 'Inter', sans-serif;
+
+  /* Extra large size for desktop */
+  font-size: 8rem;
+  font-weight: 800;
+
+  letter-spacing: 1.5px;
+  line-height: 1;
+  color: var(--text-color);
+  user-select: none;
+}
+
+/* ===========================================================
+   MOBILE — RESPONSIVE RESIZE
+   =========================================================== */
+@media (max-width: 768px) {
+  #home-page #focus-morph {
+    height: 70px;
+    margin: 0.7rem auto 0.2rem;
+  }
+
+  #home-page #focus-morph-text1,
+  #home-page #focus-morph-text2 {
+    font-size: 2.6rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+}
